@@ -18,7 +18,9 @@ jobs:
           kubernetes version: 'v1.18.2'
       - name: Interact with the cluster
         run: kubectl get nodes
-      - name: Deploy app
-        uses: kubectl apply -f manifest.yml
+      - name: Deploy the app
+        uses: okteto/apply@master
+        with:
+          manifest: manifest.yml
       - name: Show Pods
         run: kubectl get pods --show-labels
