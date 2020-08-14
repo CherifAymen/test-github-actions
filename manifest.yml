@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: hello
-        image: aymencherif/test-github-actions:go-version
+        image: aymencherif/githubactions-aks-demo:latest
         ports:
         - containerPort: 8080
 ---
@@ -30,3 +30,4 @@ spec:
   ports:
   - port: 8080
     targetPort: 8080
+  type: LoadBalancer
