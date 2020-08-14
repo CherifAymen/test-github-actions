@@ -26,10 +26,9 @@ func HealthHandler(w http.ResponseWriter, r *http.Request) {
 // SayHello returns a msg
 func SayHello(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "Bonjour Aymen !\n")
+	fmt.Fprintf(w, "Bonjour Aymen From Go!\n")
 }
 
 func main() {
 	handleRequests()
 }
-
