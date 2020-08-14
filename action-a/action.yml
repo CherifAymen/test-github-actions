@@ -1,0 +1,9 @@
+name: "Check version Action"
+description: "This is an action to check if the version used is JAVA or not"
+author: "aymen cherif"
+
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+
