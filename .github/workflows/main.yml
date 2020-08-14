@@ -21,7 +21,16 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-
+    
+    - name: check for version 
+    - run: VERSION=$(ls) | grep mvnw
+    
+    - name: mvn for java version 
+    - run: |
+       if ["$VERSION" != ""]; then
+          mvn install
+       fi
+    
     - name: docker build
       run: docker build -t githubactions-aks-demo:latest .
     
