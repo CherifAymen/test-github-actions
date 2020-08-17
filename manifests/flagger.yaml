@@ -21,7 +21,7 @@ spec:
     hosts:
     - "*"
   analysis:
-    interval: 30s
+    interval: 1m 
     threshold: 5
     maxWeight: 60
     stepWeight: 20
