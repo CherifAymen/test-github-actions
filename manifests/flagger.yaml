@@ -1,0 +1,27 @@
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: hello
+spec:
+  provider: istio
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hello
+  progressDeadlineSeconds: 60
+  autoscalerRef:
+    apiVersion: autoscaling/v2beta1
+    kind: HorizontalPodAutoscaler
+    name: hello
+  service:
+    port: 80
+    targetPort: 8080
+    gateways:
+    - hello
+    hosts:
+    - "*"
+  analysis:
+    interval: 30s
+    threshold: 5
+    maxWeight: 60
+    stepWeight: 20

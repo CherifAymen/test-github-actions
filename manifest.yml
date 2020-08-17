@@ -19,14 +19,3 @@ spec:
         image: aymencherif/test-github-actions:go-version
         ports:
         - containerPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: hello
-spec:
-  selector:
-    app: hello
-  ports:
-  - port: 8080
-    targetPort: 8080

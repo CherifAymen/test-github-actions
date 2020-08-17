@@ -66,6 +66,9 @@ jobs:
         # Path to the manifest files which will be used for deployment.
         manifests: |
           manifest.yml
+          manifests/flagger.yaml
+          manifests/hpa.yaml
+          manifests/istio.yaml
         # Fully qualified resource URL of the image(s) to be used for substitutions on the manifest files Example: contosodemo.azurecr.io/helloworld:test
         images: '${{secrets.DOCKER_LOGIN}}/githubactions-aks-demo:latest'
         # Name of a docker-registry secret that has already been set up within the cluster. Each of these secret names are added under imagePullSecrets field for the workloads found in the input manifest files
