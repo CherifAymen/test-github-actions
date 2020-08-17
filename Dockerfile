@@ -3,7 +3,12 @@ FROM maven:3-ibmjava-8
 
 WORKDIR /app
 
+COPY pom.xml mvnw.cmd mvnw ./
+
+
 RUN mvn install
+
+COPY . .
 
 ADD target/sentiment-analysis-web-0.0.1-SNAPSHOT.jar /
 EXPOSE 8080
