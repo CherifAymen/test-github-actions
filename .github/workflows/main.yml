@@ -29,7 +29,7 @@ jobs:
       run: docker login --username '${{secrets.DOCKER_LOGIN}}' --password '${{secrets.DOCKER_PASSWORD}}'
       
     - name: tag docker image
-      run: docker tag githubactions-aks-demo:'${{github.sha}}''${{secrets.DOCKER_LOGIN}}'/githubactions-aks-demo:'${{github.sha}}' 
+      run: docker tag githubactions-aks-demo:'${{github.sha}}'  '${{secrets.DOCKER_LOGIN}}'/githubactions-aks-demo:'${{github.sha}}' 
     
     - name: push docker image
       run: docker push '${{secrets.DOCKER_LOGIN}}'/githubactions-aks-demo:'${{github.sha}}' 
