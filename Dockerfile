@@ -1,26 +1,6 @@
-# Dockerfile References: https://docs.docker.com/engine/reference/builder/
+FROM openjdk:8-jdk-alpine
+# Environment Variable that defines the endpoint of sentiment-analysis python api.
 
-# Start from the latest golang base image
-FROM golang:latest
-
-
-# Set the Current Working Directory inside the container
-WORKDIR /app
-
-# Copy go mod and sum files
-COPY go.mod go.sum ./
-
-# Download all dependencies. Dependencies will be cached if the go.mod and go.sum files are not changed
-RUN go mod download
-
-# Copy the source from the current directory to the Working Directory inside the container
-COPY . .
-
-# Build the Go app
-RUN go build -o main .
-
-# Expose port 8080 to the outside world
+ADD target/sentiment-analysis-web-0.0.1-SNAPSHOT.jar /
 EXPOSE 8080
-
-# Command to run the executable
-CMD ["./main"]
+CMD ["java", "-jar", "sentiment-analysis-web-0.0.1-SNAPSHOT.jar"]
