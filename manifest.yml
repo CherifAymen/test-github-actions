@@ -12,11 +12,11 @@ spec:
     metadata:
       labels:
         app: hello
-        version: go
+        version: java
     spec:
       containers:
       - name: hello
-        image: aymencherif/test-github-actions:go-version
+        image: aymencherif/test-github-actions:java-version
         ports:
         - containerPort: 8080
 ---
