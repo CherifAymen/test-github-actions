@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: hello
-        image: aymencherif/test-github-actions
+        image: aymencherif/githubactions-aks-demo
         ports:
         - containerPort: 8080
 ---
