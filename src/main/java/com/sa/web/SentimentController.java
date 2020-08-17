@@ -12,7 +12,7 @@ public class SentimentController {
 
     @GetMapping("/hello")
     public String  sayHello() {
-    	return "Bonjour Aymen from JAVA!" ;
+    	return "Bonjour Aymen from JAVA !" ;
     }
 
     @GetMapping("/testHealth")
