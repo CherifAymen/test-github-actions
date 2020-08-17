@@ -18,6 +18,8 @@ spec:
     targetPort: 8080
     gateways:
     - hello
+    hosts:
+    - "*"
   analysis:
     interval: 1m 
     threshold: 5
