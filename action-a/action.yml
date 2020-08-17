@@ -1,0 +1,7 @@
+name: "My cURL Action"
+description: "curl ip"
+author: "aymen"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
