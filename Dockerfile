@@ -1,16 +1,26 @@
-#
-# Build stage
-#
+# Dockerfile References: https://docs.docker.com/engine/reference/builder/
 
-FROM maven:3-ibmjava-8 AS build
-COPY src /home/app/src
-COPY pom.xml /home/app
-RUN mvn -f /home/app/pom.xml clean package
+# Start from the latest golang base image
+FROM golang:latest
 
-#
-# Package stage
-#
-FROM openjdk:11-jre-slim
-COPY --from=build /home/app/target/sentiment-analysis-web-0.0.1-SNAPSHOT.jar /usr/local/lib/sentiment-analysis-web-0.0.1-SNAPSHOT.jar
+
+# Set the Current Working Directory inside the container
+WORKDIR /app
+
+# Copy go mod and sum files
+COPY go.mod go.sum ./
+
+# Download all dependencies. Dependencies will be cached if the go.mod and go.sum files are not changed
+RUN go mod download
+
+# Copy the source from the current directory to the Working Directory inside the container
+COPY . .
+
+# Build the Go app
+RUN go build -o main .
+
+# Expose port 8080 to the outside world
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/usr/local/lib/sentiment-analysis-web-0.0.1-SNAPSHOT.jar"]
+
+# Command to run the executable
+CMD ["./main"]

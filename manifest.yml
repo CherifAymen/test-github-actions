@@ -12,7 +12,7 @@ spec:
     metadata:
       labels:
         app: hello
-        version: java
+        version: go
     spec:
       containers:
       - name: hello
